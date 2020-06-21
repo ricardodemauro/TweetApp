@@ -1,0 +1,17 @@
+.bg-purple {
+  background-color: #6f42c1;
+}
+
+svg {
+    font-family: serif;
+    font-size: 12mm;
+    fill: navy;
+    width: 50px;
+    height: auto;
+}
+
+text.textSvg { 
+  font: bolder 15px sans-serif; 
+  color: white;
+  fill: white;
+}
