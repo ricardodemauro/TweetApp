@@ -15,7 +15,7 @@ const Name = (props) => {
 
 const Tweet = (props) => {
     return (
-        <span>{props.tweet}</span>
+        <span className="text-dark">{props.tweet}</span>
     )
 }
 
@@ -23,8 +23,8 @@ const TweetBody = ({ image, name, handle, tweet }) => {
     return (
         <React.Fragment>
             <Image name={name} image={image} />
-            <div className="media-body px-2">
-                <h6 className="mt-0 d-block text-gray-dark"><Name name={name} /></h6>
+            <div className="media-body px-2 text-justify">
+                <h6 className="mt-0 d-block text-dark"><Name name={name} /></h6>
                 <Tweet tweet={tweet} />
             </div>
         </React.Fragment>
@@ -33,30 +33,25 @@ const TweetBody = ({ image, name, handle, tweet }) => {
 
 const CreateTweet = ({ onFormSubmit }) => {
     const [tweet, setTweet] = useState('');
-    const [username, setUsername] = useState('');
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(tweet, username);
+        console.log(tweet);
 
         if (onFormSubmit)
-            onFormSubmit({ tweet, username });
+            onFormSubmit({ tweet });
 
         setTweet('');
     }
 
     return (
-        <div className="text-white-50 bg-purple rounded shadow-sm my-3">
+        <div className="text-white-50 rounded shadow-sm my-3">
             <div className="row p-3">
                 <form className="w-100 col-12" onSubmit={handleSubmit.bind(this)}>
                     <p className="h4 mb-4">Submit your tweet</p>
                     <div className="form-group">
                         <input type="text" className="form-control" value={tweet} onChange={(e) => setTweet(e.target.value)} aria-describedby="tweet" placeholder="your tweet" />
                     </div>
-                    <div className="form-group">
-                        <input type="text" className="form-control" value={username} onChange={(e) => setUsername(e.target.value)} aria-describedby="username" placeholder="your username" />
-                    </div>
-
                     <div className="row lh-100">
                         <div className="col-12">
                             <button type="submit" className="btn btn-primary float-right">Submit</button>

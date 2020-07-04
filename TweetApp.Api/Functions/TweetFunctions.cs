@@ -1,26 +1,42 @@
-using System;
-using System.IO;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using TweetApp.Api.Models;
+using System;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using TweetApp.Api.Data;
-using MongoDB.Driver;
+using TweetApp.Api.Extensions;
+using TweetApp.Api.Middlewares.Authentication;
+using TweetApp.Api.Middlewares.Authentication.AccessTokens;
+using TweetApp.Api.Models;
 
 namespace TweetApp.Api.Functions
 {
-    public static class TweetFunctionc
+    public class TweetFunctions
     {
-        [FunctionName("Create")]
-        public static async Task<IActionResult> Create(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "Tweet")] HttpRequest req,
-            ILogger log)
+        private readonly ILogger<TweetFunctions> _logger;
+
+        private readonly ITweetRepository _repository;
+
+        public TweetFunctions(ILogger<TweetFunctions> logger, ITweetRepository repository)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+        }
+
+        [FunctionName("Create")]
+        public async Task<IActionResult> Create(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "Tweet")] HttpRequest req,
+            [AccessToken] AccessTokenResult accessToken = default)
+        {
+            _logger.LogInformation("Starting {operation}", nameof(Create));
+
+            if (accessToken?.Status != AccessTokenStatus.Valid)
+                return new UnauthorizedResult();
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             Tweet data = JsonConvert.DeserializeObject<Tweet>(requestBody);
@@ -28,23 +44,25 @@ namespace TweetApp.Api.Functions
             if (data == null)
                 return new BadRequestObjectResult("Invalid request");
 
-            data.Created = DateTime.UtcNow;
+            data.User = accessToken.Principal.UserName();
+            data.UserId = accessToken.Principal.UserId();
 
-            var tweetColl = MongoDbFactory.Get<Tweet>("tweets");
-            await tweetColl.InsertOneAsync(data);
+            data = await _repository.InsertOneAsync(data);
 
             return new OkObjectResult(data);
         }
 
         [FunctionName("List")]
-        public static async Task<IActionResult> List(
+        public async Task<IActionResult> List(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "Tweet")] HttpRequest req,
-            ILogger log)
+            [AccessToken] AccessTokenResult accessToken = default)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
+            _logger.LogInformation("Starting {operation}", nameof(List));
 
-            var tweetColl = MongoDbFactory.Get<Tweet>("tweets");
-            var documents = await tweetColl.Find(Builders<Tweet>.Filter.Empty).ToListAsync();
+            if (accessToken?.Status != AccessTokenStatus.Valid)
+                return new UnauthorizedResult();
+
+            var documents = await _repository.List();
 
             return new OkObjectResult(documents);
         }
