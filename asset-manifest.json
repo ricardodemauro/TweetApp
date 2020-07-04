@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/TweetApp/static/css/main.af14a1ab.chunk.css",
+    "main.js": "/TweetApp/static/js/main.748e090a.chunk.js",
+    "main.js.map": "/TweetApp/static/js/main.748e090a.chunk.js.map",
+    "runtime-main.js": "/TweetApp/static/js/runtime-main.33550920.js",
+    "runtime-main.js.map": "/TweetApp/static/js/runtime-main.33550920.js.map",
+    "static/js/2.94f26320.chunk.js": "/TweetApp/static/js/2.94f26320.chunk.js",
+    "static/js/2.94f26320.chunk.js.map": "/TweetApp/static/js/2.94f26320.chunk.js.map",
+    "index.html": "/TweetApp/index.html",
+    "precache-manifest.dbcb010b57b79683298686f75fbed97b.js": "/TweetApp/precache-manifest.dbcb010b57b79683298686f75fbed97b.js",
+    "service-worker.js": "/TweetApp/service-worker.js",
+    "static/css/main.af14a1ab.chunk.css.map": "/TweetApp/static/css/main.af14a1ab.chunk.css.map",
+    "static/js/2.94f26320.chunk.js.LICENSE.txt": "/TweetApp/static/js/2.94f26320.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.33550920.js",
+    "static/js/2.94f26320.chunk.js",
+    "static/css/main.af14a1ab.chunk.css",
+    "static/js/main.748e090a.chunk.js"
+  ]
+}
