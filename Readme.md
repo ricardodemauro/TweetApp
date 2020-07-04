@@ -4,6 +4,8 @@ Created during sessions at twitch.tv/rmaurodev
 
 Published at: https://tweet.rmaurolabs.dev
 
+![.NET Core](https://github.com/ricardodemauro/TweetApp/workflows/.NET%20Core/badge.svg)
+
 ## Architecture
 
 Frontend SPA - ReactJS + Bootstrap
