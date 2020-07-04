@@ -14,6 +14,12 @@ Database - Azure Table Storage (NoSQL)
 
 Config - Azure Key Vault
 
+## Notes
+
+Custom binding attribute on Azure Functions
+
+Validation of JWT against UserInfo Endpoint of any `Open Id Connect` identity provider
+
 ## Contributors
 
 ```
