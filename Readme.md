@@ -16,11 +16,11 @@ Config - Azure Key Vault
 
 ## Contributors
 
-´´´
+```
 const contributors = [{
 	name: 'Ricardo',
 	alias: 'rmaurodev'
 	twitch: 'twitch.tv/rmaurodev,
 	blog: 'https://rmauro.dev'
 }]
-´´´
+```
