@@ -36,7 +36,6 @@ const CreateTweet = ({ onFormSubmit }) => {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(tweet);
 
         if (onFormSubmit)
             onFormSubmit({ tweet });
@@ -45,7 +44,7 @@ const CreateTweet = ({ onFormSubmit }) => {
     }
 
     return (
-        <div className="text-white-50 rounded shadow-sm my-3">
+        <div className="text-white-50 rounded shadow-sm my-3 bg-purple">
             <div className="row p-3">
                 <form className="w-100 col-12" onSubmit={handleSubmit.bind(this)}>
                     <p className="h4 mb-4">Submit your tweet</p>
@@ -54,7 +53,7 @@ const CreateTweet = ({ onFormSubmit }) => {
                     </div>
                     <div className="row lh-100">
                         <div className="col-12">
-                            <button type="submit" className="btn btn-primary float-right">Submit</button>
+                            <button type="submit" className="btn btn-primary" style={{position: "absolute", "right": "15px"}}>Submit</button>
                             <h6 className="mb-0 text-white lh-100">Bootstrap</h6>
                             <small>Since 2011</small>
                         </div>

@@ -80,9 +80,9 @@ namespace TweetApp.Api.Middlewares.Authentication.AccessTokens
 
             var client = _httpClientFactory.CreateClient();
 
-            //return await ValidateUsingUserInfo(client, disco, token, cancellationToken);
+            return await ValidateUsingUserInfo(client, disco, token, cancellationToken);
             //return await ValidateUsingInstrospect(client, disco, token, cancellationToken);
-            return await ValidateUsingJWKs(client, disco, token, cancellationToken);
+            //return await ValidateUsingJWKs(client, disco, token, cancellationToken);
         }
 
         async Task<AccessTokenResult> ValidateUsingUserInfo(HttpClient client, DiscoveryDocumentResponse disco, string token, CancellationToken cancellationToken = default)

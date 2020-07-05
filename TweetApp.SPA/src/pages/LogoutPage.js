@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useHistory, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { useOktaAuth } from '@okta/okta-react';
 import Button from 'react-bootstrap/Button';
 
@@ -15,6 +15,7 @@ const Logout = withRouter(({ history }) => {
         if (authState.isAuthenticated) {
             (async () => await logout())();
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [authState, authService]);
 
     if (!authState.isAuthenticated) {
