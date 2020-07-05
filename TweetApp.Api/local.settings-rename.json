@@ -3,9 +3,9 @@
 	"Values": {
 		"AzureWebJobsStorage": "UseDevelopmentStorage=true",
 		"FUNCTIONS_WORKER_RUNTIME": "dotnet",
-		"TableStorageConnectionString": "",
+		"TableStorageConnectionString": "", //connection string for azure table storage
 
-		"Issuer": ""
+		"Issuer": "" //issuer url, such as: https://{your-tentant}.okta.com/oauth2/default
 	},
 	"Host": {
 		"CORS": "*"

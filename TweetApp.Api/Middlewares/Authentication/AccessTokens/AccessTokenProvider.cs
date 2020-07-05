@@ -6,6 +6,7 @@
     using System.IdentityModel.Tokens.Jwt;
     using System.Security.Claims;
     using System.Text;
+    using System.Threading;
     using System.Threading.Tasks;
 
     public class AccessTokenProvider : IAccessTokenProvider
@@ -25,7 +26,7 @@
 
         byte[] Token => Encoding.ASCII.GetBytes(_issuerToken);
 
-        public Task<AccessTokenResult> ValidateToken(HttpRequest request)
+        public Task<AccessTokenResult> ValidateToken(HttpRequest request, CancellationToken cancellationToken = default)
         {
             try
             {

@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
 import { TweetBody, CreateTweet } from '../components/tweet';
+import { apiUri } from '../constants';
 
-const localApi = 'http://localhost:7071/api/Tweet/';
-const azApi = 'https://tweetappapi0033.azurewebsites.net/api/tweet/';
-
-const api = () => {
-  if (window.location.href.indexOf('localhost') > -1) {
-    return localApi;
-  }
-  return azApi;
-}
+const api = () => apiUri();
 
 function TweetPage() {
   const { authState, authService } = useOktaAuth();
