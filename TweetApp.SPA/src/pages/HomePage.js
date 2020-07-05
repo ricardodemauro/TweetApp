@@ -9,8 +9,6 @@ const HomePage = () => {
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        (async () => await updateUserInfo())();
-
         const updateUserInfo = async () => {
             if (!authState.isAuthenticated) {
                 // When user isn't authenticated, forget any user info
@@ -24,6 +22,8 @@ const HomePage = () => {
                 setLoaded(true);
             }
         }
+
+        (async () => await updateUserInfo())();
     }, [authState, authService]);
 
     const login = async () => {
