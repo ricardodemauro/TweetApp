@@ -4,6 +4,8 @@
 		<AzureFunctionsVersion>v3</AzureFunctionsVersion>
 
 		<_FunctionsSkipCleanOutput>true</_FunctionsSkipCleanOutput>
+
+		<UserSecretsId>b5464b4d-7f52-4538-a7a5-087d07504dd4</UserSecretsId>
 		
 	</PropertyGroup>
 	<ItemGroup>

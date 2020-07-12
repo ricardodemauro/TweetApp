@@ -28,8 +28,7 @@ const HomePage = () => {
 
     const login = async () => {
         if (authState.isAuthenticated)
-            console.log('you`re already logged in');
-
+            console.log('you`re already logged in. Do nothing');
         else {
             await authService.login('/');
         }

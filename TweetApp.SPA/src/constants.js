@@ -1,5 +1,6 @@
 export const CALLBACK_PATH = '/implicit/callback';
-export const OKTA_DOMAIN = 'dev-669728.okta.com';
+export const OKTA_DOMAIN_ISSUER = 'dev-669728.okta.com';
+export const OKTA_DOMAIN = 'okta.rmaurolabs.dev';
 export const CLIENT_ID = '0oa4gpq1oyOsCygrt357';
 
 export const ISSUER = `https://${OKTA_DOMAIN}/oauth2/default`;
@@ -38,6 +39,6 @@ const config = {
   scope: SCOPES.split(/\s+/),
 };
 
-console.log(config)
+//console.log(config)
 
 export default config;
