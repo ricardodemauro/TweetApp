@@ -12,6 +12,8 @@
     "react": "^16.13.1",
     "react-bootstrap": "1.0.1",
     "react-dom": "^16.13.1",
+    "react-konami": "^0.6.2",
+    "react-konami-code": "^2.0.0-beta.1",
     "react-loadingg": "^1.7.2",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.1"

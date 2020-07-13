@@ -149,7 +149,7 @@ namespace TweetApp.Api.Data
                 List<T> result = new List<T>();
 
                 var emptyQuery = table.CreateQuery<T>()
-                    .OrderBy("Timestamp");
+                    .OrderByDesc("Timestamp");
                 var token = new TableContinuationToken();
 
                 TableQuerySegment<T> segment = default;

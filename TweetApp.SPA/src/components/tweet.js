@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Konami from 'react-konami-code';
 
 const Image = ({ name }) => {
     return (
@@ -43,6 +44,10 @@ const CreateTweet = ({ onFormSubmit }) => {
         setTweet('');
     }
 
+    function easterEgg() {
+        alert('Well done! Konami code activated');
+    }
+
     return (
         <div className="text-white-50 rounded shadow-sm my-3 bg-purple">
             <div className="row p-3">
@@ -51,17 +56,20 @@ const CreateTweet = ({ onFormSubmit }) => {
                     <div className="form-group">
                         <input type="text" className="form-control" value={tweet} onChange={(e) => setTweet(e.target.value)} aria-describedby="tweet" placeholder="your tweet" />
                     </div>
+                    <Konami className="blink" action={easterEgg.bind(this)}>
+                        {"Hey, I'm an Easter Egg! Look at me!"}
+                    </Konami>
                     <div className="row lh-100">
                         <div className="col-12">
-                            <button type="submit" className="btn btn-primary" style={{position: "absolute", "right": "15px"}}>Submit</button>
-                            <h6 className="mb-0 text-white lh-100">Bootstrap</h6>
+                            <button type="submit" className="btn btn-primary" style={{ position: "absolute", "right": "15px" }}>Submit</button>
+                            <h6 className="mb-0 text-white lh-100">Bootstrap - with Konami Code</h6>
                             <small>Since 2011</small>
                         </div>
                     </div>
                 </form>
             </div>
-
         </div>
+
     )
 }
 

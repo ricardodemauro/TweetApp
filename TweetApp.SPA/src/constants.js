@@ -27,7 +27,7 @@ const redirectUri = () => {
 
 export const apiUri = () => {
   if (window.location.href.indexOf('localhost') > -1) {
-    return localApi;
+    return azApi//localApi;
   }
   return azApi;
 }
